@@ -1,10 +1,9 @@
 [TOC]
 ## Dockerfile-zookeeper3410-jdk
 ```docker
-#Dockerfile-zookeeper3410-jdk
+#zookeeper3410-jdk.dockerfile
 
-# |-- Dockerfile-zookeeper3410-jdk
-# |-- Dockerfile-zookeeper3410-jre
+# |-- zookeeper3410-jdk.dockerfile
 # `-- zookeeper-3.4.10
 #     |-- LICENSE.txt
 #     |-- NOTICE.txt
@@ -25,7 +24,7 @@
 #     |-- zookeeper-3.4.10.jar.md5
 #     `-- zookeeper-3.4.10.jar.sha1
 
-FROM xiaows/debian8-jdk8-ssh:2.0
+FROM xiaows/debian8-jdk8-ssh:3.0
 
 # TODO download & decompression & config(modify conf/zoo.cfg) it, then put cluster-zk.sh to it.
 ADD zookeeper-3.4.10/ /usr/local/zookeeper-3.4.10
@@ -38,7 +37,7 @@ RUN mkdir -p /data/zkData;\
     rm -rfv $ZOOKEEPER_HOME/bin/*.cmd;\
     chmod +x cluster-zk.sh;
 
-COPY Dockerfile-zookeeper3410-jdk /
+COPY zookeeper3410-jdk.dockerfile /
 ```
 
 ## $ZOOKEEPER_HOME/cluster-zk.sh

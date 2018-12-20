@@ -1,8 +1,8 @@
 [TOC]
-## Dockerfile-hadoop283
+## hadoop283.dockerfile
 ```docker
-#Dockerfile-hadoop283-jdk
-FROM xiaows/debian8-jdk8-ssh:2.0
+#hadoop283-jdk.dockerfile
+FROM xiaows/debian8-jdk8-ssh:3.0
 # MAINTAINER XIAOWS <xiaows08@163.com>
 
 WORKDIR /root
@@ -27,8 +27,8 @@ RUN mkdir -p /data/hdfs/namenode;\
     chmod +x /root/*.sh;\
     hdfs namenode -format
 
-COPY Dockerfile-hadoop283-jdk /
-# ENTRYPOINT hdfs namenode -formatroot
+COPY hadoop283-jdk.dockerfile /
+# ENTRYPOINT hdfs namenode -format
 ```
 
 ## $HADOOP_HOME/etc/hadoop/core-site.xml

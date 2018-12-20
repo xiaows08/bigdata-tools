@@ -1,9 +1,9 @@
 [TOC]
 ## Dockerfile-hbase146
 ```docker
-#Dockerfile-hbase146-jdk
+#hbase146-jdk.dockerfile
 
-#|-- Dockerfile-hbase146-jdk
+#|-- hbase146-jdk.dockerfile
 #`-- hbase-1.4.6
 #    |-- CHANGES.txt
 #    |-- LEGAL
@@ -16,7 +16,7 @@
 #    |-- lib
 #    `-- logs
 
-FROM xiaows/debian8-jdk8-ssh:2.0
+FROM xiaows/debian8-jdk8-ssh:3.0
 
 # TODO download & decompression & modify conf/{hbase-env.sh,hbase-site.xml,regionservers}
 ## wget http://archive.apache.org/dist/hbase/1.4.6/hbase-1.4.6-bin.tar.gz
@@ -27,7 +27,7 @@ ENV PAHT=$PATH:HBASE_HOME/bin
 
 WORKDIR $HBASE_HOME
 
-COPY Dockerfile-hbase146-jdk /
+COPY hbase146-jdk.dockerfile /
 ```
 
 ## $HBASE_HOME/conf/hbase-env.sh

@@ -11,9 +11,9 @@
 #    |-- config
 #    |-- libs
 #    |-- site-docs
-#    `-- start-cluster.sh
+#    `-- cluster-kafka.sh
 
-FROM xiaows/debian8-jdk8-ssh:2.0
+FROM xiaows/debian8-jdk8-ssh:3.0
 
 # TODO download & decompression & config(modify conf/server.properties) it, then put cluster-kafka.sh to it.
 ## wget http://mirrors.tuna.tsinghua.edu.cn/apache/kafka/2.0.0/kafka_2.11-2.0.0.tgz
@@ -27,11 +27,11 @@ WORKDIR $KAFKA_HOME
 RUN mkdir -p /data/kafka-logs;\
    rm -rf $KAFKA_HOME/bin/*.cmd;\
    chmod +x *.sh
-   
-COPY Dockerfile-kafka211-jdk /
+
+COPY kafka211.dockerfile /
 ```
 
-## $KAFKA_HOME/start-cluster.sh
+## $KAFKA_HOME/cluster-kafka.sh
 ```bash
 #!/bin/bash
 if [ $# = 0 ]; then
@@ -41,7 +41,6 @@ fi
 
 for i in 1 2 3; do
     ssh kafka-$i sed -i "s/broker.id=[0-9]*/broker.id=$i/g" $KAFKA_HOME/config/server.properties;
-    # ssh kafka-$i nohup $KAFKA_HOME/bin/kafka-server-$1.sh $KAFKA_HOME/config/server.properties > /dev/null  2>&1 &
     ssh kafka-$i $KAFKA_HOME/bin/kafka-server-$1.sh -daemon $KAFKA_HOME/config/server.properties
 done
 
