@@ -1,5 +1,5 @@
 [TOC]
-## Dockerfile-spark220
+## spark220.dockerfile
 ```docker
 #Dockerfile-spark220
 
@@ -20,14 +20,14 @@
 #    |-- sbin
 #    `-- yarn
 
-FROM xiaows/debian8-jdk8-ssh:2.0
+FROM xiaows/debian8-jdk8-ssh:3.2
 
 ADD spark-2.2.0-bin-hadoop2.7/ /usr/local/spark-2.2.0-bin-hadoop2.7/
 ENV SPARK_HOME=/usr/local/spark-2.2.0-bin-hadoop2.7/
 
 WORKDIR $SPARK_HOME
 
-COPY Dockerfile-spark220 /
+COPY spark220.dockerfile /
 ```
 
 ## $SPARK_HOME/conf/spark-env.sh

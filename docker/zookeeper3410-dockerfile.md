@@ -24,7 +24,7 @@
 #     |-- zookeeper-3.4.10.jar.md5
 #     `-- zookeeper-3.4.10.jar.sha1
 
-FROM xiaows/debian8-jdk8-ssh:3.0
+FROM xiaows/debian8-jdk8-ssh:3.2
 
 # TODO download & decompression & config(modify conf/zoo.cfg) it, then put cluster-zk.sh to it.
 ADD zookeeper-3.4.10/ /usr/local/zookeeper-3.4.10

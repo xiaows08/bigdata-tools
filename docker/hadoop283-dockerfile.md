@@ -2,33 +2,24 @@
 ## hadoop283.dockerfile
 ```docker
 #hadoop283-jdk.dockerfile
-FROM xiaows/debian8-jdk8-ssh:3.0
+FROM xiaows/debian8-jdk8-ssh:3.2
 # MAINTAINER XIAOWS <xiaows08@163.com>
 
-WORKDIR /root
-
 #install hadoop
-COPY hadoop-2.8.3/ /usr/local/hadoop-2.8.3
-#copy hadoop-config
-# COPY hadoop-conf/ $HADOOP_HOME/etc/hadoop/
+ADD hadoop-2.8.3/ /usr/local/hadoop-2.8.3
 ENV HADOOP_HOME=/usr/local/hadoop-2.8.3
 ENV PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
 
+WORKDIR $HADOOP_HOME
+
 RUN mkdir -p /data/hdfs/namenode;\
     mkdir -p /data/hdfs/datanode;\
-    # mkdir -p $HADOOP_HOME/logs;\
-    # ln -s $HADOOP_HOME/etc/hadoop /root/hadoop-conf;\
     rm -rfv $HADOOP_HOME/share/doc/;\
     rm -rfv $HADOOP_HOME/bin/*.cmd;\
     rm -rfv $HADOOP_HOME/sbin/*.cmd;\
-    mv $HADOOP_HOME/etc/hadoop/start-hadoop.sh /root/;\
-    mv $HADOOP_HOME/etc/hadoop/run-wordcount.sh /root/;\
-    mv /root/Dockerfile-debian8-jdk8-ssh /;\
-    chmod +x /root/*.sh;\
     hdfs namenode -format
 
 COPY hadoop283-jdk.dockerfile /
-# ENTRYPOINT hdfs namenode -format
 ```
 
 ## $HADOOP_HOME/etc/hadoop/core-site.xml

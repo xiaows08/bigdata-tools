@@ -13,7 +13,7 @@
 #    |-- site-docs
 #    `-- cluster-kafka.sh
 
-FROM xiaows/debian8-jdk8-ssh:3.0
+FROM xiaows/debian8-jdk8-ssh:3.2
 
 # TODO download & decompression & config(modify conf/server.properties) it, then put cluster-kafka.sh to it.
 ## wget http://mirrors.tuna.tsinghua.edu.cn/apache/kafka/2.0.0/kafka_2.11-2.0.0.tgz
@@ -24,7 +24,7 @@ ENV PAHT=$PATH:KAFKA_HOME/bin
 
 WORKDIR $KAFKA_HOME
 
-RUN mkdir -p /data/kafka-logs;\
+RUN mkdir -p /data/kafka;\
    rm -rf $KAFKA_HOME/bin/*.cmd;\
    chmod +x *.sh
 
@@ -110,7 +110,7 @@ socket.request.max.bytes=104857600
 ############################# Log Basics #############################
 
 # A comma separated list of directories under which to store log files
-log.dirs=/data/kafka-logs
+log.dirs=/data/kafka
 
 # The default number of log partitions per topic. More partitions allow greater
 # parallelism for consumption, but this will also result in more files across

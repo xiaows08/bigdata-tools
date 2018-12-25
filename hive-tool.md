@@ -6,7 +6,7 @@
 <configuration>
     <property>
         <name>javax.jdo.option.ConnectionURL</name>
-        <value>jdbc:mysql://10.100.63.181:3306/hive?createDatabaseIfNotExist=true</value>
+        <value>jdbc:mysql://awx.local:3306/hive?createDatabaseIfNotExist=true</value>
     </property>
     <property>
         <name>javax.jdo.option.ConnectionDriverName</name>
@@ -18,7 +18,7 @@
     </property>
     <property>
         <name>javax.jdo.option.ConnectionPassword</name>
-        <value>root</value>
+        <value>123456</value>
     </property>
 </configuration>
 ```
