@@ -25,6 +25,7 @@
 * 添加mysql连接依赖 `mysql-connector-java-5.1.40.jar`
 
 # 将hive以服务的形式运行在后台
+schematool -dbType mysql -initSchema
 nohub ./bin/hiveserver2 1>/dev/null 2>&1 &
 ## 启动后
 # 客户端连接
